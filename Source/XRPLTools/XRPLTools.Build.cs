@@ -9,34 +9,39 @@ public class XRPLTools : ModuleRules
 		PCHUsage = ModuleRules.PCHUsageMode.UseExplicitOrSharedPCHs;
 		
 		PublicIncludePaths.AddRange(
-			new string[] {
+			new string[]
+			{
 			}
 		);
 				
 		
 		PrivateIncludePaths.AddRange(
-			new string[] {
+			new string[]
+			{
 			}
 		);
-			
 		
 		PublicDependencyModuleNames.AddRange(
 			new string[]
 			{
-				"Core",
-				"CoreUObject", 
-				"Engine",
-				"Projects"
 			}
 		);
-			
-		
+
+		if (Target.Type == TargetType.Editor)
+		{
+			DynamicallyLoadedModuleNames.Add("Settings");
+			PrivateIncludePathModuleNames.Add("Settings");
+		}
+
 		PrivateDependencyModuleNames.AddRange(
 			new string[]
 			{
 				"Http",
 				"Json",
-				"JsonUtilities"
+				"JsonUtilities",
+				"Core",
+				"CoreUObject",
+				"Engine"
 			}
 		);
 		
